@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'products/index'
 
+  root 'products#index'
+
   resources :products
   resources :product_categories
 
