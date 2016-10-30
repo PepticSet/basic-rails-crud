@@ -1,0 +1,25 @@
+<%= form_for :product, url: products_path do |f| %>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </p>
+
+    <p>
+      <%= f.label :price %>
+      <%= f.number_field :price %>
+    </p>
+
+    <p>
+      <%= f.label :product_categories %>
+      <%= f.collection_select :product_category_ids, ProductCategory.all, :id, :name, {}, {:multiple => true} %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>

@@ -1,0 +1,12 @@
+<h1>Category editing</h1>
+
+<%= form_for :category, url: product_category_path(@category), method: :patch do |f| %>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
