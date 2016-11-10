@@ -19,30 +19,30 @@ class ProductCategoriesController < ApplicationController
     @category = ProductCategory.new(category_params)
 
     if @category.save
-      flash[:success] = 'New product category created!'
+      flash[:success] = t('product_categories.create.success')
       redirect_to product_categories_path
     else
-      flash[:alert] = 'Can\'t create the product category, please check the form'
+      flash[:alert] = t('product_categories.create.alert')
       render :new
     end
   end
 
   def update
     if @category.update(category_params)
-      flash[:success] = 'Product category updated!'
+      flash[:success] = t('product_categories.update.success')
       redirect_to product_categories_path
     else
-      flash[:alert] = 'Can\'t update the product category, please check the form'
+      flash[:alert] = t('product_categories.update.alert')
       render :edit
     end
   end
 
   def destroy
     if @category.destroy
-      flash[:success] = 'Product category deleted!'
+      flash[:success] = t('product_categories.destroy.success')
       redirect_to product_categories_path
     else
-      flash[:alert] = 'Can\'t delete the product category!'
+      flash[:alert] = t('product_categories.destroy.alert')
       render :index
     end
   end

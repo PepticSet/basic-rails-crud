@@ -19,10 +19,10 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      flash[:success] = 'New product created!'
+      flash[:success] = t('products.create.success')
       redirect_to url_for products_index_url
     else
-      flash[:alert] = 'Can\'t create the product, please check the form'
+      flash[:alert] = t('products.create.alert')
       render :new
     end
 
@@ -30,20 +30,20 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      flash[:success] = 'Product updated!'
+      flash[:success] = t('products.update.success')
       redirect_to products_path
     else
-      flash[:alert] = 'Can\'t update the product, please check the form'
+      flash[:alert] = t('products.update.alert')
       render :edit
     end
   end
 
   def destroy
     if @product.destroy
-      flash[:success] = 'Product deleted!'
+      flash[:success] = t('products.destroy.success')
       redirect_to products_path
     else
-      flash[:alert] = 'Can\'t delete the product!'
+      flash[:alert] = t('products.destroy.alert')
       render :index
     end
   end
