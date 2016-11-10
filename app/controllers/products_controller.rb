@@ -17,14 +17,23 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.save
-    redirect_to url_for products_index_url
+
+    if @product.save
+      flash[:success] = 'New product created!'
+      redirect_to url_for products_index_url
+    else
+      flash[:alert] = 'Can\'t create the product, please check the form'
+      render :new
+    end
+
   end
 
   def update
     if @product.update(product_params)
+      flash[:success] = 'Product updated!'
       redirect_to products_path
     else
+      flash[:alert] = 'Can\'t update the product, please check the form'
       render 'edit'
     end
   end

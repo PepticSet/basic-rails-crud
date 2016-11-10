@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+# Setup
+```
+createuser --createdb --login warehouse
+rake db:setup
+```

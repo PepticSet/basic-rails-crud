@@ -16,15 +16,23 @@ class ProductCategoriesController < ApplicationController
   end
 
   def create
-    @category = ProductCategory.new(params.require(:product_category).permit(:name))
-    @category.save
-    redirect_to product_categories_path
+    @category = ProductCategory.new(category_params)
+
+    if @category.save
+      flash[:success] = 'New product category created!'
+      redirect_to product_categories_path
+    else
+      flash[:alert] = 'Can\'t create the product category, please check the form'
+      render :new
+    end
   end
 
   def update
-    if @category.update(params.require(:product_category).permit(:name))
+    if @category.update(category_params)
+      flash[:success] = 'Product category updated!'
       redirect_to product_categories_path
     else
+      flash[:alert] = 'Can\'t update the product category, please check the form'
       render 'edit'
     end
   end
@@ -35,6 +43,10 @@ class ProductCategoriesController < ApplicationController
   end
 
   private
+
+  def category_params
+    params.require(:product_category).permit(:name)
+  end
 
   def set_category
     @category = ProductCategory.find(params[:id])
