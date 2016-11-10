@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
-  has_and_belongs_to_many :product_categories
+  has_many :product_categories_products
+  has_many :product_categories, through: :product_categories_products
 
   validates :name, presence: true, length: { minimum: 3 }
   validates :price, presence: true, numericality: true

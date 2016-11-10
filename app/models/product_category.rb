@@ -1,5 +1,6 @@
 class ProductCategory < ApplicationRecord
-  has_and_belongs_to_many :products
+  has_many :product_categories_products
+  has_many :products, through: :product_categories_products
 
   validates :name, presence: true, length: { minimum: 3, maximum: 200 }
 
