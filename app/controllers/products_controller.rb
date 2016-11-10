@@ -34,13 +34,18 @@ class ProductsController < ApplicationController
       redirect_to products_path
     else
       flash[:alert] = 'Can\'t update the product, please check the form'
-      render 'edit'
+      render :edit
     end
   end
 
   def destroy
-    @product.destroy
-    redirect_to products_path
+    if @product.destroy
+      flash[:success] = 'Product deleted!'
+      redirect_to products_path
+    else
+      flash[:alert] = 'Can\'t delete the product!'
+      render :index
+    end
   end
 
   private
