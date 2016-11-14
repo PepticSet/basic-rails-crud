@@ -1,6 +1,6 @@
 class ProductCategoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, except: [:index, :new, :show]
 
   def index
     @categories = ProductCategory.all
@@ -40,11 +40,10 @@ class ProductCategoriesController < ApplicationController
   def destroy
     if @category.destroy
       flash[:success] = t('product_categories.destroy.success')
-      redirect_to product_categories_path
     else
       flash[:alert] = t('product_categories.destroy.alert')
-      render :index
     end
+    redirect_to product_categories_path
   end
 
   private
