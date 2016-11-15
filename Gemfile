@@ -41,7 +41,20 @@ gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  gem 'byebug', require: false
+  gem 'faker'
+  gem 'pry-byebug'
+  gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
+  gem 'shoulda-callback-matchers'
+  gem 'fuubar'
+  gem 'timecop'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'rspec-sidekiq'
+  gem 'simplecov', require: false
+  gem 'rack_session_access'
+  gem 'capybara'
+  gem 'launchy'
 end
 
 group :development do
